@@ -1,0 +1,97 @@
+apiVersion: v1alpha1
+generated: "2018-06-13T09:24:07.392654524Z"
+kind: RepositoryContent
+services:
+- apiVersion: v1alpha1
+  kind: ServiceTemplate
+  metadata:
+    name: arm-server
+    platforms:
+      - linux
+  spec:
+    description: Arm server on AWS
+    icon: https://raw.githubusercontent.com/sixeyed/techcon2019-templates/master/img/aws.png
+    source:
+      image: sixeyed/techcon2019-no-op
+    title: A1 instance on AWS
+    parameters:
+    - name: ipAddress
+      description: IP address
+      type: string      
+    - name: username
+      description: Username
+      type: string
+      defaultValue: ubuntu
+- apiVersion: v1alpha1
+  kind: ServiceTemplate
+  metadata:
+    name: docker-hub
+    platforms:
+      - linux
+  spec:
+    description: Docker Hub
+    icon: https://raw.githubusercontent.com/sixeyed/techcon2019-templates/master/img/docker.png
+    source:
+      image: sixeyed/techcon2019-no-op
+    title: Docker Hub details
+    parameters:
+    - name: username
+      description: Username
+      type: string
+- apiVersion: v1alpha1
+  kind: ServiceTemplate
+  metadata:
+    name: c-hello-world
+    platforms:
+      - linux
+  spec:
+    description: Simple Hello World app in C
+    icon: https://raw.githubusercontent.com/sixeyed/techcon2019-templates/master/img/wave.png
+    source:
+      image: sixeyed/techcon2019-c-hello-world
+    title: Hello World sample app
+- apiVersion: v1alpha1
+  kind: ServiceTemplate
+  metadata:
+    name: ml-armnn
+    platforms:
+      - linux
+  spec:
+    description: MNIST handwritten digits ML sample with Arm NN
+    icon: https://raw.githubusercontent.com/sixeyed/techcon2019-templates/master/img/tensorflow.png
+    source:
+      image: sixeyed/techcon2019-ml-armnn
+    title: Machine Learning SDK
+templates:
+- apiVersion: v1alpha1
+  kind: ApplicationTemplate
+  metadata:
+    name: c-hello-world
+    platforms:
+    - linux
+  spec:
+    title: 'TechCon2019 Part 1: Cross-platform builds'
+    description: A simple Hello World app to demonstrate Docker on Arm
+    services:
+    - name: arm-server
+      serviceId: arm-server
+    - name: docker-hub
+      serviceId: docker-hub
+    - name: c-hello-world
+      serviceId: c-hello-world      
+- apiVersion: v1alpha1
+  kind: ApplicationTemplate
+  metadata:
+    name: ml-armnn
+    platforms:
+    - linux
+  spec:
+    title: 'TechCon2019 Part 2: Machine Learning SDK'
+    description: MNIST Machine Learning with Arm NN on Docker
+    services:
+    - name: arm-server
+      serviceId: arm-server
+    - name: docker-hub
+      serviceId: docker-hub
+    - name: ml-armnn
+      serviceId: ml-armnn
