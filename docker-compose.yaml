@@ -3,16 +3,16 @@ version: "3.6"
 services:
 
   techcon2019-hello-world:
-    image: sixeyed/techcon2019-c-hello-world
+    image: techcon2019/c-hello-world
     build:
       context: ./services/c-hello-world
       
   techcon2019-ml-armnn:
-    image: sixeyed/techcon2019-ml-armnn
+    image: techcon2019/ml-armnn
     build:
       context: ./services/ml-armnn
 
   techcon2019-no-op:
-    image: sixeyed/techcon2019-no-op
+    image: techcon2019/no-op
     build:
       context: ./services/no-op
